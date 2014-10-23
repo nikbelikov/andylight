@@ -1,0 +1,16 @@
+{
+    "name": "Project",
+    "version": "1",
+    "authors": [
+        "Author"
+    ],
+    "dependencies": {
+        "jquery": "latest",
+        "bootstrap-sass-official": "latest",
+        "jquery.customSelect": "latest",
+        "jquery-placeholder": "latest",
+        "modernizr": "latest",
+        "jquery.inputmask": "latest",
+        "svgeezy": "latest"
+    }
+}

@@ -1,0 +1,23 @@
+@import variables
+
+=placeholder($color)
+    ::-webkit-input-placeholder
+        color: $color
+    :-moz-placeholder
+        color: $color
+        opacity: 1
+    ::-moz-placeholder
+        color: $color
+        opacity: 1
+    :-ms-input-placeholder
+        color: $color
+
+=textov
+    overflow: hidden
+    text-overflow: ellipsis
+    white-space: nowrapmiddle
+    height: $height
+
+=gradient($color1, $color2)
+    background-color: $color1
+    background-image: linear-gradient(to bottom, $color1, $color2)

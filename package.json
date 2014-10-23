@@ -1,0 +1,22 @@
+{
+    "name": "Project",
+    "author": "Author",
+    "private": true,
+    "devDependencies": {
+        "gulp": "*",
+        "gulp-plumber": "*",
+        
+        "gulp-ruby-sass": "*",
+        "gulp-autoprefixer": "*",
+        "gulp-cssmin": "*",
+
+        "gulp-imagemin": "*",
+        "gulp-svg2png": "*",
+
+        "gulp-coffee": "*",
+        "gulp-uglify": "*",
+        "gulp-concat": "*",
+
+        "gulp-filter": "*"
+    }
+}
