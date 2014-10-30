@@ -12,8 +12,6 @@ var coffee = require('gulp-coffee');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 
-var filter = require('gulp-filter');
-
 var paths = {
     css: ['dist/css/**/*.css'],
     sass: ['sass/**/*.sass'],
@@ -67,6 +65,7 @@ gulp.task('svg2png', ['images'], function () {
 
 gulp.task('coffee', function() {
     gulp.src(paths.coffee)
+        .pipe(plumber())
         .pipe(coffee())
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'))

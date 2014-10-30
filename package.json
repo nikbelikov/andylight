@@ -5,18 +5,17 @@
     "devDependencies": {
         "gulp": "*",
         "gulp-plumber": "*",
-        
+
         "gulp-ruby-sass": "*",
         "gulp-autoprefixer": "*",
         "gulp-cssmin": "*",
 
         "gulp-imagemin": "*",
+        "imagemin-optipng": "*",
         "gulp-svg2png": "*",
 
         "gulp-coffee": "*",
         "gulp-uglify": "*",
-        "gulp-concat": "*",
-
-        "gulp-filter": "*"
+        "gulp-concat": "*"
     }
 }
