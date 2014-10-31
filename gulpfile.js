@@ -15,9 +15,10 @@ var concat = require('gulp-concat');
 var paths = {
     css: ['dist/css/**/*.css'],
     csslibs: ['bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'],
-    sass: ['sass/**/*.sass'],
-    img: ['img/**/*'],
-    coffee: ['coffee/**/*.coffee'],
+    sass: ['src/sass/**/*.sass'],
+    img: ['src/img/**/*'],
+    svg: ['src/img/svg/*.svg'],
+    coffee: ['src/coffee/**/*.coffee'],
     plugins: [
         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
         'bower_components/modernizr/modernizr.js',
@@ -35,7 +36,7 @@ gulp.task("bower-jquery", function () {
 
 gulp.task("bower-bootstrap", function () {
     gulp.src('bower_components/bootstrap-sass-official/assets/stylesheets/**/*')
-        .pipe(gulp.dest('sass/bootstrap'))
+        .pipe(gulp.dest('src/sass/bootstrap'))
 });
 
 gulp.task('sass', function () {
@@ -69,9 +70,9 @@ gulp.task('images', function () {
 });
 
 gulp.task('svg2png', ['images'], function () {
-    gulp.src('img/svg/*.svg')
+    gulp.src(paths.svg)
         .pipe(svg2png())
-        .pipe(gulp.dest('img/svg/'));
+        .pipe(gulp.dest('src/img/svg/'));
 });
 
 gulp.task('coffee', function () {
