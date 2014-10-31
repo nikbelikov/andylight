@@ -23,7 +23,7 @@ gulp build
 - компиляция sass и coffeescript
 - сжатие стилей, скриптов и изображений
 - генерация PNG из SVG
-- поддеркжка изображений для retina-экранов (см. [Retina-Images](https://github.com/Retina-Images/Retina-Images/))
+- поддержка изображений для retina-экранов (см. [Retina-Images](https://github.com/Retina-Images/Retina-Images/))
 
 ## Контакты
 
