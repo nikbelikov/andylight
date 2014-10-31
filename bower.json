@@ -8,6 +8,7 @@
         "jquery": "latest",
         "bootstrap-sass-official": "latest",
         "jquery.customSelect": "latest",
+        "malihu-custom-scrollbar-plugin": "latest",
         "jquery-placeholder": "latest",
         "modernizr": "latest",
         "jquery.inputmask": "latest",

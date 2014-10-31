@@ -14,6 +14,7 @@ var concat = require('gulp-concat');
 
 var paths = {
     css: ['dist/css/**/*.css'],
+    csslibs: ['bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'],
     sass: ['sass/**/*.sass'],
     img: ['img/**/*'],
     coffee: ['coffee/**/*.coffee'],
@@ -21,16 +22,18 @@ var paths = {
         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
         'bower_components/modernizr/modernizr.js',
         'bower_components/jquery.customSelect/jquery.customSelect.min.js',
+        'bower_components/jquery-mousewheel/jquery.mousewheel.min.js',
+        'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
         'bower_components/jquery.inputmask/dist/inputmask/jquery.inputmask.js',
         'bower_components/svgeezy/svgeezy.min.js']
 };
 
-gulp.task("bower-jquery", function(){
+gulp.task("bower-jquery", function () {
     gulp.src(['bower_components/jquery/dist/jquery.min.js', 'bower_components/jquery/dist/jquery.min.map'])
         .pipe(gulp.dest('dist/js'))
 });
 
-gulp.task("bower-bootstrap", function(){
+gulp.task("bower-bootstrap", function () {
     gulp.src('bower_components/bootstrap-sass-official/assets/stylesheets/**/*')
         .pipe(gulp.dest('sass/bootstrap'))
 });
@@ -49,6 +52,14 @@ gulp.task('cssmin', ['sass'], function () {
         .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('csslibs', function () {
+    gulp.src(paths.csslibs)
+        .pipe(concat('libs.css'))
+        .pipe(autoprefixer())
+        .pipe(cssmin())
+        .pipe(gulp.dest('dist/css'))
+});
+
 gulp.task('images', function () {
     return gulp.src(paths.img)
         .pipe(imagemin({
@@ -63,7 +74,7 @@ gulp.task('svg2png', ['images'], function () {
         .pipe(gulp.dest('img/svg/'));
 });
 
-gulp.task('coffee', function() {
+gulp.task('coffee', function () {
     gulp.src(paths.coffee)
         .pipe(plumber())
         .pipe(coffee())
@@ -84,5 +95,5 @@ gulp.task('watch', function () {
 });
 
 gulp.task('bowerfiles', ['bower-jquery', 'bower-bootstrap']);
-gulp.task('build', ['bowerfiles', 'sass', 'cssmin', 'images', 'svg2png', 'coffee', 'plugins']);
+gulp.task('build', ['bowerfiles', 'sass', 'cssmin', 'csslibs', 'images', 'svg2png', 'coffee', 'plugins']);
 gulp.task('default', ['watch']);
