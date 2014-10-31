@@ -92,6 +92,7 @@ gulp.task('plugins', function () {
 gulp.task('watch', function () {
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.coffee, ['coffee']);
+    gulp.watch(paths.img, ['images', 'svg2png']);
 });
 
 gulp.task('bowerfiles', ['bower-jquery', 'bower-bootstrap']);
