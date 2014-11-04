@@ -1,42 +1,43 @@
-input[type="checkbox"],
-input[type="radio"] 
-    display: none
+.canvas
+    input[type="checkbox"],
+    input[type="radio"]
+        display: none
 
-    + label
-        font: 18px bold
-        color: #444
-        cursor: pointer
-        user-select: none
+        + label
+            font: 18px bold
+            color: #444
+            cursor: pointer
+            user-select: none
 
-        &::before
-            content: ""
-            display: inline-block
-            height: 18px
-            width: 18px
-            margin: 0 5px 0 0
-            background-image: url(http://uniformjs.com/images/sprite.png)
-            background-repeat: no-repeat
+            &:before
+                content: ""
+                display: inline-block
+                height: 18px
+                width: 18px
+                margin: 0 5px 0 0
+                background-image: url(http://uniformjs.com/images/sprite.png)
+                background-repeat: no-repeat
 
-input[type="checkbox"] + label:before
-    background-position: -38px -260px
+    input[type="checkbox"] + label:before
+        background-position: -38px -260px
 
-input[type="radio"] + label:before
-    background-position: 0px -279px
+    input[type="radio"] + label:before
+        background-position: 0px -279px
 
-input[type="checkbox"]:checked + label:before
-    background-position: -114px -260px
+    input[type="checkbox"]:checked + label:before
+        background-position: -114px -260px
 
-input[type="radio"]:checked + label:before
-    background-position: -108px -279px
+    input[type="radio"]:checked + label:before
+        background-position: -108px -279px
 
-input[type="checkbox"]:disabled + label:before
-    background-position: -152px -260px
+    input[type="checkbox"]:disabled + label:before
+        background-position: -152px -260px
 
-input[type="checkbox"]:checked:disabled + label:before
-    background-position: -171px -260px
+    input[type="checkbox"]:checked:disabled + label:before
+        background-position: -171px -260px
 
-input[type="radio"]:disabled + label:before
-    background-position: -144px -279px
+    input[type="radio"]:disabled + label:before
+        background-position: -144px -279px
 
-input[type="radio"]:checked:disabled + label:before
-    background-position: -162px -279px
+    input[type="radio"]:checked:disabled + label:before
+        background-position: -162px -279px
