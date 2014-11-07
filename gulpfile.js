@@ -1,15 +1,5 @@
 var gulp = require('gulp');
-var plumber = require('gulp-plumber');
-
-var sass = require('gulp-ruby-sass');
-var autoprefixer = require('gulp-autoprefixer');
-var cssmin = require('gulp-cssmin');
-
-var imagemin = require('gulp-imagemin');
-var svg2png = require('gulp-svg2png');
-
-var uglify = require('gulp-uglify');
-var concat = require('gulp-concat');
+var $ = require('gulp-load-plugins')();
 
 var paths = {
     css: ['dist/css/**/*.css'],
@@ -40,24 +30,24 @@ gulp.task("bower-bootstrap", function () {
 
 gulp.task('sass', function () {
     return gulp.src(paths.sass)
-        .pipe(plumber())
-        .pipe(sass())
-        .pipe(autoprefixer())
-        .pipe(cssmin())
+        .pipe($.plumber())
+        .pipe($.rubySass())
+        .pipe($.autoprefixer())
+        .pipe($.cssmin())
         .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('csslibs', function () {
     gulp.src(paths.csslibs)
-        .pipe(concat('libs.css'))
-        .pipe(autoprefixer())
-        .pipe(cssmin())
+        .pipe($.concat('libs.css'))
+        .pipe($.autoprefixer())
+        .pipe($.cssmin())
         .pipe(gulp.dest('dist/css'))
 });
 
 gulp.task('images', ['svg2png'], function () {
     return gulp.src(paths.img)
-        .pipe(imagemin({
+        .pipe($.imagemin({
             progressive: true
         }))
         .pipe(gulp.dest('dist/img'));
@@ -65,21 +55,21 @@ gulp.task('images', ['svg2png'], function () {
 
 gulp.task('svg2png', function () {
     gulp.src(paths.svg)
-        .pipe(svg2png())
+        .pipe($.svg2png())
         .pipe(gulp.dest('src/img/svg/'));
 });
 
 gulp.task('js', function () {
     gulp.src(paths.js)
-        .pipe(plumber())
-        .pipe(uglify())
+        .pipe($.plumber())
+        .pipe($.uglify())
         .pipe(gulp.dest('dist/js'))
 });
 
 gulp.task('plugins', function () {
     gulp.src(paths.plugins)
-        .pipe(concat('plugins.min.js'))
-        .pipe(uglify())
+        .pipe($.concat('plugins.min.js'))
+        .pipe($.uglify())
         .pipe(gulp.dest('dist/js'))
 });
 

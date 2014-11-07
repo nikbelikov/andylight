@@ -4,6 +4,7 @@
     "private": true,
     "devDependencies": {
         "gulp": "*",
+        "gulp-load-plugins": "*",
         "gulp-plumber": "*",
 
         "gulp-ruby-sass": "*",
