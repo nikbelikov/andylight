@@ -20,7 +20,7 @@ gulp build
 
 - стандартный шаблон index.html
 - подгрузка зависимостей с помощью Bower
-- компиляция sass и coffeescript
+- компиляция sass
 - сжатие стилей, скриптов и изображений
 - генерация PNG из SVG
 - поддержка изображений для retina-экранов (см. [Retina-Images](https://github.com/Retina-Images/Retina-Images/))

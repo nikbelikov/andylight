@@ -14,7 +14,6 @@
         "imagemin-optipng": "*",
         "gulp-svg2png": "*",
 
-        "gulp-coffee": "*",
         "gulp-uglify": "*",
         "gulp-concat": "*"
     }

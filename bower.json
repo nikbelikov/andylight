@@ -5,8 +5,8 @@
         "Author"
     ],
     "dependencies": {
-        "jquery": "latest",
-        "bootstrap-sass-official": "latest",
+        "jquery": "1.11",
+        "bootstrap-sass-official": "3",
         "jquery.customSelect": "latest",
         "malihu-custom-scrollbar-plugin": "latest",
         "jquery-placeholder": "latest",

@@ -8,7 +8,6 @@ var cssmin = require('gulp-cssmin');
 var imagemin = require('gulp-imagemin');
 var svg2png = require('gulp-svg2png');
 
-var coffee = require('gulp-coffee');
 var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
 
@@ -18,7 +17,7 @@ var paths = {
     sass: ['src/sass/**/*.sass'],
     img: ['src/img/**/*'],
     svg: ['src/img/svg/*.svg'],
-    coffee: ['src/coffee/**/*.coffee'],
+    js: ['src/js/**/*.js'],
     plugins: [
         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
         'bower_components/modernizr/modernizr.js',
@@ -44,11 +43,6 @@ gulp.task('sass', function () {
         .pipe(plumber())
         .pipe(sass())
         .pipe(autoprefixer())
-        .pipe(gulp.dest('dist/css'));
-});
-
-gulp.task('cssmin', ['sass'], function () {
-    gulp.src(paths.css)
         .pipe(cssmin())
         .pipe(gulp.dest('dist/css'));
 });
@@ -61,7 +55,7 @@ gulp.task('csslibs', function () {
         .pipe(gulp.dest('dist/css'))
 });
 
-gulp.task('images', function () {
+gulp.task('images', ['svg2png'], function () {
     return gulp.src(paths.img)
         .pipe(imagemin({
             progressive: true
@@ -69,16 +63,15 @@ gulp.task('images', function () {
         .pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('svg2png', ['images'], function () {
+gulp.task('svg2png', function () {
     gulp.src(paths.svg)
         .pipe(svg2png())
         .pipe(gulp.dest('src/img/svg/'));
 });
 
-gulp.task('coffee', function () {
-    gulp.src(paths.coffee)
+gulp.task('js', function () {
+    gulp.src(paths.js)
         .pipe(plumber())
-        .pipe(coffee())
         .pipe(uglify())
         .pipe(gulp.dest('dist/js'))
 });
@@ -92,10 +85,10 @@ gulp.task('plugins', function () {
 
 gulp.task('watch', function () {
     gulp.watch(paths.sass, ['sass']);
-    gulp.watch(paths.coffee, ['coffee']);
+    gulp.watch(paths.js, ['js']);
     gulp.watch(paths.img, ['images', 'svg2png']);
 });
 
 gulp.task('bowerfiles', ['bower-jquery', 'bower-bootstrap']);
-gulp.task('build', ['bowerfiles', 'sass', 'cssmin', 'csslibs', 'images', 'svg2png', 'coffee', 'plugins']);
+gulp.task('build', ['bowerfiles', 'sass', 'csslibs', 'images', 'svg2png', 'js', 'plugins']);
 gulp.task('default', ['watch']);
