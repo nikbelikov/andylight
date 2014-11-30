@@ -32,7 +32,7 @@ gulp.task('bower-bootstrap', function () {
 gulp.task('sass', function () {
     return gulp.src(paths.sass)
         .pipe($.plumber())
-        .pipe($.rubySass())
+        .pipe($.rubySass({ "sourcemap=none": true }))
         .pipe($.autoprefixer())
         .pipe($.cssmin())
         .pipe(gulp.dest('dist/css'));
