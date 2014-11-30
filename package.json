@@ -14,6 +14,7 @@
         "gulp-imagemin": "*",
         "imagemin-optipng": "*",
         "gulp-svg2png": "*",
+        "gulp.spritesmith": "*",
 
         "gulp-uglify": "*",
         "gulp-concat": "*"

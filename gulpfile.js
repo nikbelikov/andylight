@@ -5,8 +5,9 @@ var paths = {
     css: ['dist/css/**/*.css'],
     csslibs: ['bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'],
     sass: ['src/sass/**/*.sass'],
-    img: ['src/img/**/*'],
+    img: ['src/img/*', '!src/img/icons'],
     svg: ['src/img/svg/*.svg'],
+    icons: ['src/img/icons/*.png'],
     js: ['src/js/**/*.js'],
     plugins: [
         'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
@@ -18,14 +19,14 @@ var paths = {
         'bower_components/svgeezy/svgeezy.min.js']
 };
 
-gulp.task("bower-jquery", function () {
+gulp.task('bower-jquery', function () {
     gulp.src(['bower_components/jquery/dist/jquery.min.js', 'bower_components/jquery/dist/jquery.min.map'])
-        .pipe(gulp.dest('dist/js'))
+        .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task("bower-bootstrap", function () {
+gulp.task('bower-bootstrap', function () {
     gulp.src('bower_components/bootstrap-sass-official/assets/stylesheets/**/*')
-        .pipe(gulp.dest('src/sass/bootstrap'))
+        .pipe(gulp.dest('src/sass/bootstrap'));
 });
 
 gulp.task('sass', function () {
@@ -42,7 +43,23 @@ gulp.task('csslibs', function () {
         .pipe($.concat('libs.css'))
         .pipe($.autoprefixer())
         .pipe($.cssmin())
-        .pipe(gulp.dest('dist/css'))
+        .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('sprite', function () {
+    var spriteData = gulp.src(paths.icons).pipe($.spritesmith({
+        imgName: '../img/sprite.png',
+        cssName: '_sprites.sass',
+        algorithm: 'binary-tree'
+    }));
+    spriteData.img.pipe(gulp.dest('./src/img/'));
+    spriteData.css.pipe(gulp.dest('./src/sass/'));
+});
+
+gulp.task('svg2png', function () {
+    gulp.src(paths.svg)
+        .pipe($.svg2png())
+        .pipe(gulp.dest('src/img/svg/'));
 });
 
 gulp.task('images', ['svg2png'], function () {
@@ -53,32 +70,28 @@ gulp.task('images', ['svg2png'], function () {
         .pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('svg2png', function () {
-    gulp.src(paths.svg)
-        .pipe($.svg2png())
-        .pipe(gulp.dest('src/img/svg/'));
-});
-
 gulp.task('js', function () {
     gulp.src(paths.js)
         .pipe($.plumber())
         .pipe($.uglify())
-        .pipe(gulp.dest('dist/js'))
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('plugins', function () {
     gulp.src(paths.plugins)
         .pipe($.concat('plugins.min.js'))
         .pipe($.uglify())
-        .pipe(gulp.dest('dist/js'))
+        .pipe(gulp.dest('dist/js'));
 });
 
 gulp.task('watch', function () {
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.js, ['js']);
-    gulp.watch(paths.img, ['images', 'svg2png']);
+    gulp.watch(paths.img, ['images']);
+    gulp.watch(paths.svg, ['svg2png', 'images']);
+    gulp.watch(paths.icons, ['sprite', 'images']);
 });
 
 gulp.task('bowerfiles', ['bower-jquery', 'bower-bootstrap']);
-gulp.task('build', ['bowerfiles', 'sass', 'csslibs', 'images', 'svg2png', 'js', 'plugins']);
+gulp.task('build', ['bowerfiles', 'sprite', 'sass', 'csslibs', 'svg2png', 'images', 'js', 'plugins']);
 gulp.task('default', ['watch']);

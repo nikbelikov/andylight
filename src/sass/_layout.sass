@@ -1,6 +1,14 @@
 html, body
     height: 100%
 
+::selection
+    background: $select-text-bg
+    color: $select-text-color
+
+::-moz-selection
+    background: $select-text-bg
+    color: $select-text-color
+
 .main-wrapper
     min-width: $layout-min-width
     max-width: $layout-max-width
