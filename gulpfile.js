@@ -3,7 +3,7 @@ var $ = require('gulp-load-plugins')();
 
 var paths = {
     css: ['dist/css/**/*.css'],
-    csslibs: ['bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'],
+    csslibs: ['bower_components/animate.css/animate.min.css', 'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'],
     sass: ['src/sass/**/*.sass'],
     img: ['src/img/*', '!src/img/icons'],
     svg: ['src/img/svg/*.svg'],
