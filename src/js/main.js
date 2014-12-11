@@ -5,7 +5,7 @@ $(function(){
     // $(selector).inputmask("99-9999999");
     // https://github.com/RobinHerbots/jquery.inputmask
 
-    // $(select).customSelect();
+    // $('select').customSelect();
     // http://adam.co/lab/jquery/customselect/
 
 });
