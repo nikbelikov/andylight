@@ -5,7 +5,7 @@ var paths = {
     css: ['dist/css/**/*.css'],
     csslibs: ['bower_components/animate.css/animate.min.css', 'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'],
     sass: ['src/sass/**/*.sass'],
-    img: ['src/img/**/*', '!src/img/icons'],
+    img: ['src/img/**/*', '!src/img/icons', '!src/img/svg/**/*'],
     svg: ['src/img/svg/*.svg'],
     icons: ['src/img/icons/*.png'],
     js: ['src/js/**/*.js'],
