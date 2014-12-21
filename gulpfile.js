@@ -3,7 +3,10 @@ var $ = require('gulp-load-plugins')();
 
 var paths = {
     css: ['dist/css/**/*.css'],
-    csslibs: ['bower_components/animate.css/animate.min.css', 'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'],
+    csslibs: [
+        'bower_components/animate.css/animate.min.css',
+        'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css'
+    ],
     sass: ['src/sass/**/*.sass'],
     img: ['src/img/**/*', '!src/img/icons', '!src/img/svg/**/*'],
     svg: ['src/img/svg/*.svg'],
@@ -16,7 +19,8 @@ var paths = {
         'bower_components/jquery-mousewheel/jquery.mousewheel.min.js',
         'bower_components/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js',
         'bower_components/jquery.inputmask/dist/inputmask/jquery.inputmask.js',
-        'bower_components/svgeezy/svgeezy.min.js']
+        'bower_components/svgeezy/svgeezy.min.js'
+    ]
 };
 
 gulp.task('bower-jquery', function () {
