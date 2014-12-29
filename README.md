@@ -74,6 +74,18 @@ src/img/image@2x.jpg
 src/img/image@3x.jpg
 ```
 
+### Тестируем баги верстки
+
+Откройте отладчик и выполните следующий код:
+
+```
+var a,w=document.createTreeWalker(document,NodeFilter.SHOW_TEXT);while(a=w.nextNode()){if(a.textContent.trim().length)a.textContent='Одиннадцатиклассница пошла посмотреть на достопримечательность, она шла долго, несколько строчек, пока не пришла'}
+```
+
+Это поможет вам увидеть, где что поехало, какие блоки сломались.
+
+Код взят [из статьи на Хабрахабре](http://habrahabr.ru/company/2gis/blog/246831/) от 2ГИС.
+
 ## Контакты
 
 Если у вас имеются какие-либо вопросы или пожелания, пишите письма на [nikbelikov@me.com](mailto:nikbelikov@me.com) или воспользуйтесь [твиттером](https://twitter.com/_nikbelikov).
