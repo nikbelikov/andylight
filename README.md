@@ -88,7 +88,7 @@ var a,w=document.createTreeWalker(document,NodeFilter.SHOW_TEXT);while(a=w.nextN
 
 ## Контакты
 
-Если у вас имеются какие-либо вопросы или пожелания, пишите письма на [nikbelikov@me.com](mailto:nikbelikov@me.com) или воспользуйтесь [твиттером](https://twitter.com/_nikbelikov).
+Если у вас имеются какие-либо вопросы или пожелания, пишите письма на [nikmail88@gmail.com](mailto:nikmail88@gmail.com) или воспользуйтесь [твиттером](https://twitter.com/_nikbelikov).
 
 ## Лицензия
 
