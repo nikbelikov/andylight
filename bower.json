@@ -7,12 +7,13 @@
     "dependencies": {
         "jquery": "1.11",
         "bootstrap-sass-official": "3",
-        "modernizr": "latest",
-        "jquery.customSelect": "latest",
-        "malihu-custom-scrollbar-plugin": "latest",
-        "jquery-placeholder": "latest",
-        "jquery.inputmask": "latest",
-        "svgeezy": "latest",
-        "animate.css": "latest"
+        "modernizr": "*",
+        "jquery.customSelect": "*",
+        "malihu-custom-scrollbar-plugin": "*",
+        "jquery-placeholder": "*",
+        "jquery.inputmask": "*",
+        "svgeezy": "*",
+        "animate.css": "*",
+        "owl.carousel": "*"
     }
 }
