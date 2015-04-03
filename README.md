@@ -2,13 +2,18 @@
 
 ## Как начать?
 
-У вас должен быть установлен [bower](http://bower.io/) и [gulp](http://gulpjs.com/).
+У вас должен быть установлены:
+
+- [nodejs и npm](https://nodejs.org/)
+- [bower](http://bower.io/)
+- [gulp](http://gulpjs.com/)
 
 Далее выполняем:
 
 ```
-npm i
+sudo npm i
 bower i
+gulp bowerfiles
 gulp build
 ```
 
@@ -23,7 +28,6 @@ gulp build
 - компиляция sass
 - сжатие стилей, скриптов и изображений
 - генерация PNG из SVG
-- генерация спрайтов
 - поддержка изображений для retina-экранов (см. [Retina-Images](https://github.com/Retina-Images/Retina-Images/))
 
 #### Bower
@@ -43,22 +47,6 @@ gulp build
 #### SVG
 
 SVG-файлы хранятся в папке src/img/svg. Изначально ее нет и ее нужно создать. Это сделано потому, что на проекте может не использоваться SVG вовсе. После запуска задачи `gulp` или `gulp watch` можно будет сладывать svg в исходную папку, а gulp сожмет его и положит в dist/img/svg.
-
-#### Спрайты
-
-После выполнения задачи `gulp build` появится возможность использовать спрайты.
-
-Например, мы создаем тег `<i class="icon icon-test"></i>`. После этого прописываем в файл `_icons.sass` стиль для этого тега:
-
-```
-.icon
-    display: inline-block
-
-.icon-test
-    +sprite($test)
-```
-
-Или вы можете описать свою версию использования спрайтов.
 
 #### Изображения для экранов высокой четкости
 
