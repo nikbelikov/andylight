@@ -10,14 +10,12 @@ html, body
     color: $select-text-color
 
 .main-wrapper
+    min-width: $layout-min-width
+    max-width: $layout-max-width
+    margin: 0 auto
     min-height: 100%
     height: auto !important
     height: 100%
-
-    @media (min-width: $layout-min-width)
-        min-width: $layout-min-width
-        max-width: $layout-max-width
-        margin: 0 auto
 
 .header
     height: $header-height
@@ -27,16 +25,13 @@ html, body
     padding: 0 0 $footer-height
 
 .wrapper
-    @media (min-width: $layout-min-width)
-        width: $layout-min-width
-        margin: 0 auto
+    width: $layout-min-width
+    margin: 0 auto
 
 .footer
+    min-width: $layout-min-width
+    max-width: $layout-max-width
     margin: -$footer-height auto 0
     height: $footer-height
     position: relative
     background: #d3d3d3
-
-    @media (min-width: $layout-min-width)
-        min-width: $layout-min-width
-        max-width: $layout-max-width

@@ -31,6 +31,13 @@
 <p class="browsehappy">Вы используете <strong>устаревший</strong> браузер. Пожалуйста, <a href="http://browsehappy.com/">обновите его</a>.</p>
 <![endif]-->
 
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="icon-test" viewBox="0 0 100 100">
+        <path d="M100,0 L100,100 L0,100 L0,0 L100,0 z M95,5 L5,5 L5,95 L95,95 L95,5 z" />
+        <path d="M10.898,10.898 L89.102,10.898 L89.102,89.102 L10.898,89.102 L10.898,10.898 z" />
+    </symbol>
+</svg>
+
 <!-- begin .main-wrapper -->
 <div class="main-wrapper">
 
@@ -47,7 +54,13 @@
     <main class="content">
         <div class="wrapper">
 
-            Content: Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad asperiores consequuntur, deleniti dicta eos fugiat obcaecati rerum ullam. Atque consectetur enim fuga, impedit in iste magnam quos reprehenderit. Necessitatibus, quasi.
+            <h3>SVG icon example</h3>
+
+            <p>
+                <svg class="icon-test">
+                    <use xlink:href="#icon-test" />
+                </svg>
+            </p>
 
         </div>
     </main><!-- end .content -->
