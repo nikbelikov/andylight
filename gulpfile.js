@@ -38,13 +38,7 @@ gulp.task('csslibs', function () {
         .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('svg2png', function () {
-    gulp.src(paths.svg)
-        .pipe($.svg2png())
-        .pipe(gulp.dest('src/img/svg/'));
-});
-
-gulp.task('images', ['svg2png'], function () {
+gulp.task('images', function () {
     return gulp.src(paths.img)
         .pipe($.imagemin({
             progressive: true
@@ -73,5 +67,5 @@ gulp.task('watch', function () {
 });
 
 gulp.task('bowerfiles', ['bower-jquery', 'bower-bootstrap']);
-gulp.task('build', ['sass', 'csslibs', 'svg2png', 'images', 'js', 'plugins']);
+gulp.task('build', ['sass', 'csslibs', 'images', 'js', 'plugins']);
 gulp.task('default', ['watch']);

@@ -5,15 +5,20 @@
         "Author"
     ],
     "dependencies": {
-        "jquery": "1.11",
-        "bootstrap-sass-official": "3",
-        "modernizr": "*",
-        "jquery.customSelect": "*",
-        "malihu-custom-scrollbar-plugin": "*",
-        "jquery-placeholder": "*",
-        "jquery.inputmask": "*",
-        "svgeezy": "*",
-        "animate.css": "*",
-        "owl.carousel": "*"
+      "jquery": "1.11",
+      "bootstrap-sass-official": "3",
+      "modernizr": "*",
+      "jquery.customSelect": "*",
+      "malihu-custom-scrollbar-plugin": "*",
+      "jquery-placeholder": "*",
+      "jquery.inputmask": "*",
+      "svgeezy": "*",
+      "animate.css": "*",
+      "owl.carousel": "*",
+      "odometer": "*",
+      "magnific-popup": "*",
+      "jquery-ui": "*",
+      "selectik": "*",
+      "c3": "*"
     }
 }

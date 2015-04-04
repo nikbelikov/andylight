@@ -24,10 +24,9 @@ gulp build
 ## Что включено?
 
 - стандартный шаблон index.html
-- подгрузка зависимостей с помощью Bower
+- загрузка зависимостей с помощью Bower
 - компиляция sass
 - сжатие стилей, скриптов и изображений
-- генерация PNG из SVG
 - поддержка изображений для retina-экранов (см. [Retina-Images](https://github.com/Retina-Images/Retina-Images/))
 
 #### Bower
