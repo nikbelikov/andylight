@@ -12,8 +12,12 @@ $select-text-bg: black
 $img: '../img'
 
 // fonts
-=ptsans($size:14px)
-    font: $size 'PT Sans', sans-serif
+=font($name, $size)
+    font-family: $name, sans-serif
+    font-size: $size
+
+=mainfont($size:14px)
+    +font("CaviarDreams", $size)
 
 // bootstrap
 $font-family-sans-serif: Arial, Helvetica, sans-serif

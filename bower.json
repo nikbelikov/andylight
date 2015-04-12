@@ -19,6 +19,8 @@
       "magnific-popup": "*",
       "jquery-ui": "*",
       "selectik": "*",
-      "c3": "*"
+      "c3": "*",
+      "underscore": "*",
+      "underscore.string": "*"
     }
 }
