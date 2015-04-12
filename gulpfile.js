@@ -25,7 +25,9 @@ gulp.task('bower-bootstrap', function () {
 
 gulp.task('sass', function () {
     return $.rubySass('src/sass', {style: 'expanded'})
-        .pipe($.autoprefixer())
+        .pipe($.autoprefixer({
+            browsers: ['last 2 versions']
+        }))
         .pipe($.cssmin())
         .pipe(gulp.dest('dist/css'));
 });
