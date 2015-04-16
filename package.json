@@ -6,6 +6,7 @@
         "gulp": "*",
         "gulp-load-plugins": "*",
         "gulp-plumber": "*",
+        "gulp-rename": "*",
 
         "gulp-ruby-sass": "*",
         "gulp-autoprefixer": "*",

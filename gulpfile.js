@@ -29,12 +29,15 @@ gulp.task('sass', function () {
             browsers: ['last 2 versions']
         }))
         .pipe($.cssmin())
+        .pipe($.rename({
+            suffix: ".min"
+        }))
         .pipe(gulp.dest('dist/css'));
 });
 
 gulp.task('csslibs', function () {
     gulp.src(paths.csslibs)
-        .pipe($.concat('libs.css'))
+        .pipe($.concat('libs.min.css'))
         .pipe($.autoprefixer())
         .pipe($.cssmin())
         .pipe(gulp.dest('dist/css'));
@@ -52,6 +55,9 @@ gulp.task('js', function () {
     gulp.src(paths.js)
         .pipe($.plumber())
         .pipe($.uglify())
+        .pipe($.rename({
+            suffix: ".min"
+        }))
         .pipe(gulp.dest('dist/js'));
 });
 
