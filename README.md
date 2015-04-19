@@ -78,6 +78,8 @@ var a,w=document.createTreeWalker(document,NodeFilter.SHOW_TEXT);while(a=w.nextN
 
 Код взят [из статьи на Хабрахабре](http://habrahabr.ru/company/2gis/blog/246831/) от 2ГИС.
 
+Вы также можете воспользоваться [расширением для Google Chrome](http://goo.gl/3xt6MV) для решения этой задачи.
+
 ## Контакты
 
 Если у вас имеются какие-либо вопросы или пожелания, пишите письма на [nikbelikov@me.com](mailto:nikbelikov@me.com) или воспользуйтесь [твиттером](https://twitter.com/_nikbelikov).
