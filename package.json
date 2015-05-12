@@ -5,6 +5,7 @@
     "devDependencies": {
         "gulp": "*",
         "gulp-load-plugins": "*",
+        "gulp-jade": "*",
         "gulp-plumber": "*",
         "gulp-rename": "*",
 

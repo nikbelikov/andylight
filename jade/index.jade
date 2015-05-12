@@ -1,0 +1,26 @@
+doctype html
+
+html.no-js
+
+    include includes/head
+
+    body
+        svg(xmlns="http://www.w3.org/2000/svg", style="display: none")
+            symbol(id="icon-test", viewBox="0 0 100 100")
+                path(d="M100,0 L100,100 L0,100 L0,0 L100,0 z M95,5 L5,5 L5,95 L95,95 L95,5 z")
+                path(d="M10.898,10.898 L89.102,10.898 L89.102,89.102 L10.898,89.102 L10.898,10.898 z")
+
+        .main-wrapper
+            include includes/header
+
+            main.content
+                .wrapper
+                    h2 Andylight - шаблон для быстрого старта верстки
+
+                    h3 SVG icon example
+
+                    p
+                        svg.icon-test
+                            use(xlink:href="#icon-test")
+
+        include includes/footer

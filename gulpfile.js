@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
 var paths = {
+    jadeAll: ['jade/**/*.jade'],
+    jadeSrc: ['jade/*.jade'],
     css: ['dist/css/**/*.css'],
     csslibs: [],
     sass: ['src/sass/**/*.sass'],
@@ -21,6 +23,16 @@ gulp.task('bower-jquery', function () {
 gulp.task('bower-bootstrap', function () {
     gulp.src('bower_components/bootstrap-sass-official/assets/stylesheets/**/*')
         .pipe(gulp.dest('src/sass/bootstrap'));
+});
+
+gulp.task('jade', function() {
+    gulp.src(paths.jadeSrc)
+        .pipe($.jade({
+            pretty: "    "
+        }).on('error', function (err) {
+            console.log(err);
+        }))
+        .pipe(gulp.dest(''))
 });
 
 gulp.task('sass', function () {
@@ -69,11 +81,12 @@ gulp.task('plugins', function () {
 });
 
 gulp.task('watch', function () {
+    gulp.watch(paths.jadeAll, ['jade']);
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.js, ['js']);
     gulp.watch(paths.img, ['images']);
 });
 
 gulp.task('bowerfiles', ['bower-jquery', 'bower-bootstrap']);
-gulp.task('build', ['sass', 'csslibs', 'images', 'js', 'plugins']);
+gulp.task('build', ['jade', 'sass', 'csslibs', 'images', 'js', 'plugins']);
 gulp.task('default', ['watch']);
