@@ -1,32 +1,16 @@
 var gulp = require('gulp');
+var browserify = require('browserify');
+var vinylSourceStream = require('vinyl-source-stream');
+var watchify = require('watchify');
+var assign = require('lodash.assign');
 var $ = require('gulp-load-plugins')();
 
 var paths = {
-    jadeAll: ['jade/**/*.jade'],
-    jadeSrc: ['jade/*.jade'],
-    css: ['dist/css/**/*.css'],
-    csslibs: [],
-    sass: ['src/sass/**/*.sass'],
-    img: ['src/img/**/*'],
-    svg: ['src/img/svg/*.svg'],
-    js: ['src/js/**/*.js'],
-    plugins: [
-        'bower_components/modernizr/modernizr.js'
-    ]
+    csslibs: []
 };
 
-gulp.task('bower-jquery', function () {
-    gulp.src(['bower_components/jquery/dist/jquery.min.js', 'bower_components/jquery/dist/jquery.min.map'])
-        .pipe(gulp.dest('dist/js'));
-});
-
-gulp.task('bower-bootstrap', function () {
-    gulp.src('bower_components/bootstrap-sass-official/assets/stylesheets/**/*')
-        .pipe(gulp.dest('src/sass/bootstrap'));
-});
-
 gulp.task('jade', function() {
-    gulp.src(paths.jadeSrc)
+    gulp.src('jade/*.jade')
         .pipe($.jade({
             pretty: "    "
         }).on('error', function (err) {
@@ -55,38 +39,55 @@ gulp.task('csslibs', function () {
         .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('images', function () {
-    return gulp.src(paths.img)
+gulp.task('cleanImages', function () {
+    return gulp.src('dist/img', {read: false})
+        .pipe($.clean());
+});
+
+gulp.task('images', ['cleanImages'], function () {
+    return gulp.src('src/img/**/*')
         .pipe($.imagemin({
             progressive: true
         }))
         .pipe(gulp.dest('dist/img'));
 });
 
-gulp.task('js', function () {
-    gulp.src(paths.js)
-        .pipe($.plumber())
-        .pipe($.uglify())
-        .pipe($.rename({
-            suffix: ".min"
+gulp.task('uglify', ['browserify'], function() {
+    return gulp.src('dist/js/*.js')
+        .pipe($.uglify({
+            preserveComments: 'some'
         }))
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('plugins', function () {
-    gulp.src(paths.plugins)
-        .pipe($.concat('plugins.min.js'))
-        .pipe($.uglify())
+gulp.task('browserify', function() {
+    return browserify('src/js/app.js')
+        .bundle()
+        .pipe(vinylSourceStream('bundle.js'))
         .pipe(gulp.dest('dist/js'));
 });
 
+var customOpts = {
+    entries: ['src/js/app.js'],
+    debug: true
+};
+var opts = assign({}, watchify.args, customOpts);
+var b = watchify(browserify(opts));
+
+gulp.task('browserify-watch', browserifybundle);
+b.on('update', browserifybundle);
+
+function browserifybundle() {
+    return b.bundle()
+        .pipe(vinylSourceStream('bundle.js'))
+        .pipe(gulp.dest('dist/js'));
+}
+
 gulp.task('watch', function () {
-    gulp.watch(paths.jadeAll, ['jade']);
-    gulp.watch(paths.sass, ['sass']);
-    gulp.watch(paths.js, ['js']);
-    gulp.watch(paths.img, ['images']);
+    gulp.watch('jade/**/*.jade', ['jade']);
+    gulp.watch('src/sass/**/*.sass', ['sass']);
+    gulp.watch('src/img/**/*', ['images']);
 });
 
-gulp.task('bowerfiles', ['bower-jquery', 'bower-bootstrap']);
-gulp.task('build', ['jade', 'sass', 'csslibs', 'images', 'js', 'plugins']);
-gulp.task('default', ['watch']);
+gulp.task('build', ['jade', 'sass', 'csslibs', 'images', 'uglify']);
+gulp.task('default', ['watch', 'browserify-watch']);
