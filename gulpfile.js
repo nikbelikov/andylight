@@ -21,9 +21,7 @@ gulp.task('jade', function() {
 
 gulp.task('sass', function () {
     return $.rubySass('src/sass', {style: 'expanded'})
-        .pipe($.autoprefixer({
-            browsers: ['last 2 versions']
-        }))
+        .pipe($.autoprefixer())
         .pipe($.cssmin())
         .pipe($.rename({
             suffix: ".min"
