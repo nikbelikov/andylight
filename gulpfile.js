@@ -19,13 +19,16 @@ gulp.task('jade', function() {
         .pipe(gulp.dest(''))
 });
 
-gulp.task('sass', function () {
+gulp.task('sass', ['jade'], function () {
     return $.rubySass('src/sass', {style: 'expanded'})
-        .pipe($.autoprefixer())
-        .pipe($.cssmin())
         .pipe($.rename({
             suffix: ".min"
         }))
+        //.pipe($.uncss({
+        //    html: ['index.html']
+        //}))
+        .pipe($.autoprefixer())
+        .pipe($.cssmin())
         .pipe(gulp.dest('dist/css'));
 });
 
