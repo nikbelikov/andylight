@@ -53,6 +53,12 @@ gulp.task('images', ['cleanImages'], function () {
         .pipe(gulp.dest('dist/img'));
 });
 
+gulp.task('webp', ['images'], function () {
+    return gulp.src('dist/img/**/*')
+        .pipe($.webp())
+        .pipe(gulp.dest('dist/img'));
+});
+
 gulp.task('uglify', ['browserify'], function() {
     return gulp.src('dist/js/*.js')
         .pipe($.uglify({
@@ -87,8 +93,8 @@ function browserifybundle() {
 gulp.task('watch', function () {
     gulp.watch('jade/**/*.jade', ['jade']);
     gulp.watch('src/sass/**/*.sass', ['sass']);
-    gulp.watch('src/img/**/*', ['images']);
+    gulp.watch('src/img/**/*', ['webp']);
 });
 
-gulp.task('build', ['jade', 'sass', 'csslibs', 'images', 'uglify']);
+gulp.task('build', ['jade', 'sass', 'csslibs', 'webp', 'uglify']);
 gulp.task('default', ['watch', 'browserify-watch']);

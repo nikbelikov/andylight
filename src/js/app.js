@@ -1,6 +1,6 @@
 "use strict";
 
-// your awesome code here
+var Modernizr = require('modernizr');
 
 // module example
 var testModule = require('./modules/test.js');
