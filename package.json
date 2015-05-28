@@ -10,6 +10,7 @@
     "bootstrap-sass": "^3.3.4",
     "browserify": "^10.2.0",
     "browserify-shim": "^3.8.6",
+    "event-stream": "^3.3.1",
     "gulp": "^3.8.11",
     "gulp-autoprefixer": "^2.2.0",
     "gulp-clean": "^0.3.1",
@@ -24,20 +25,18 @@
     "gulp-uncss": "^1.0.1",
     "gulp-webp": "^2.3.0",
     "jquery": "^2.1.4",
-    "lodash.assign": "^3.1.0",
     "underscore": "^1.8.3",
-    "vinyl-source-stream": "^1.1.0",
-    "watchify": "^3.2.1"
+    "vinyl-source-stream": "^1.1.0"
   },
   "browser": {
-      "modernizr": "./bower_components/modernizr/modernizr.js"
+    "modernizr": "./bower_components/modernizr/modernizr.js"
   },
   "browserify-shim": {
-      "modernizr": "Modernizr"
+    "modernizr": "Modernizr"
   },
   "browserify": {
-      "transform": [
-          "browserify-shim"
-      ]
+    "transform": [
+      "browserify-shim"
+    ]
   }
 }

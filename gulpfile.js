@@ -1,8 +1,7 @@
 var gulp = require('gulp');
 var browserify = require('browserify');
 var vinylSourceStream = require('vinyl-source-stream');
-var watchify = require('watchify');
-var assign = require('lodash.assign');
+var es = require('event-stream');
 var $ = require('gulp-load-plugins')();
 
 var paths = {
@@ -68,33 +67,30 @@ gulp.task('uglify', ['browserify'], function() {
 });
 
 gulp.task('browserify', function() {
-    return browserify('src/js/app.js')
-        .bundle()
-        .pipe(vinylSourceStream('bundle.js'))
-        .pipe(gulp.dest('dist/js'));
+    var files = [
+        'app.js'
+    ];
+    var tasks = files.map(function(entry) {
+        return browserify({
+            entries: ['src/js/' + entry],
+            debug: true
+        })
+            .bundle()
+            .pipe(vinylSourceStream(entry))
+            .pipe($.rename({
+                extname: '.bundle.js'
+            }))
+            .pipe(gulp.dest('dist/js'));
+    });
+    return es.merge.apply(null, tasks);
 });
-
-var customOpts = {
-    entries: ['src/js/app.js'],
-    debug: true
-};
-var opts = assign({}, watchify.args, customOpts);
-var b = watchify(browserify(opts));
-
-gulp.task('browserify-watch', browserifybundle);
-b.on('update', browserifybundle);
-
-function browserifybundle() {
-    return b.bundle()
-        .pipe(vinylSourceStream('bundle.js'))
-        .pipe(gulp.dest('dist/js'));
-}
 
 gulp.task('watch', function () {
     gulp.watch('jade/**/*.jade', ['jade']);
     gulp.watch('src/sass/**/*.sass', ['sass']);
     gulp.watch('src/img/**/*', ['webp']);
+    gulp.watch('src/js/**/*.js', ['browserify']);
 });
 
 gulp.task('build', ['jade', 'sass', 'csslibs', 'webp', 'uglify']);
-gulp.task('default', ['watch', 'browserify-watch']);
+gulp.task('default', ['watch']);
