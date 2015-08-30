@@ -1,4 +1,6 @@
 var gulp = require('gulp');
+var autoprefixer = require('autoprefixer-core');
+var cssnano = require('cssnano');
 var browserify = require('browserify');
 var vinylSourceStream = require('vinyl-source-stream');
 var es = require('event-stream');
@@ -26,8 +28,12 @@ gulp.task('sass', ['jade'], function () {
         //.pipe($.uncss({
         //    html: ['index.html']
         //}))
-        .pipe($.autoprefixer())
-        .pipe($.cssmin())
+        .pipe($.postcss([
+            autoprefixer({
+                browsers: ['last 2 versions']
+            }),
+            cssnano()
+        ]))
         .pipe(gulp.dest('dist/css'));
 });
 
