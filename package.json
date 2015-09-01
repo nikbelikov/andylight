@@ -9,6 +9,7 @@
   "dependencies": {
     "autoprefixer-core": "^5.2.1",
     "bootstrap-sass": "^3.3.4",
+    "browser-sync": "^2.8.2",
     "browserify": "^10.2.0",
     "browserify-shim": "^3.8.6",
     "cssnano": "^2.6.1",
