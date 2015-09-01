@@ -14,7 +14,7 @@ gulp.task('copy-bootstrap', function () {
 
 gulp.task('serve', ['sass'], function() {
     browserSync.init({
-        server: "./"
+        server: "./dist"
     });
 
     gulp.watch('jade/**/*.jade', ['jade']);
@@ -24,7 +24,7 @@ gulp.task('serve', ['sass'], function() {
 });
 
 gulp.task('jade', function() {
-    return gulp.src('jade/*.jade')
+    return gulp.src('src/jade/*.jade')
         .pipe($.jade({
             pretty: "    "
         }).on('error', function (err) {
