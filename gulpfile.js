@@ -23,7 +23,6 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch('src/js/**/*.js', ['browserify']);
 });
 
-
 gulp.task('jade', function() {
     return gulp.src('jade/*.jade')
         .pipe($.jade({
@@ -31,7 +30,7 @@ gulp.task('jade', function() {
         }).on('error', function (err) {
             console.log(err);
         }))
-        .pipe(gulp.dest(''))
+        .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream({once: true}));
 });
 
@@ -43,7 +42,8 @@ var postcssPlugins = [
 ];
 
 gulp.task('sass', ['jade'], function () {
-    return $.rubySass('src/sass', {style: 'expanded'})
+    gulp.src('src/sass/**/*.sass')
+        .pipe($.sass().on('error', $.sass.logError))
         .pipe($.rename({
             suffix: ".min"
         }))
@@ -56,7 +56,9 @@ gulp.task('sass', ['jade'], function () {
 });
 
 gulp.task('csslibs', function () {
-    gulp.src([])
+    var csslibs = [];
+
+    gulp.src(csslibs)
         .pipe($.concat('libs.min.css'))
         .pipe($.postcss(postcssPlugins))
         .pipe(gulp.dest('dist/css'));

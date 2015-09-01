@@ -23,7 +23,7 @@
     "gulp-load-plugins": "^0.10.0",
     "gulp-postcss": "^6.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-ruby-sass": "^1.0.5",
+    "gulp-sass": "^2.0.4",
     "gulp-uglify": "^1.2.0",
     "gulp-uncss": "^1.0.1",
     "gulp-webp": "^2.3.0",
