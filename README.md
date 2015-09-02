@@ -52,7 +52,7 @@ gulp build
 
 #### Postcss
 
-В шаблоне для изменения скомпилированного css-кода используются плагины [Postcss](https://github.com/postcss/postcss).
+В шаблоне для изменения скомпилированного css-кода используются [плагины](http://postcss.parts/) [Postcss](https://github.com/postcss/postcss).
 
 - [autoprefixer](https://github.com/postcss/autoprefixer) (автоматически проставляет браузерные префиксы)
 - [cssnano](https://github.com/ben-eb/cssnano) (сжимает css-код)
