@@ -17,7 +17,7 @@ gulp.task('serve', ['sass'], function() {
         server: "./dist"
     });
 
-    gulp.watch('jade/**/*.jade', ['jade']);
+    gulp.watch('src/jade/**/*.jade', ['jade']);
     gulp.watch(['src/sass/**/*.sass', 'src/sass/**/*.scss'], ['sass']);
     gulp.watch('src/img/**/*', ['webp']);
     gulp.watch('src/js/**/*.js', ['browserify']);
