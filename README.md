@@ -13,7 +13,6 @@
 
 ```
 sudo npm i
-bower i
 gulp copy-bootstrap
 gulp build
 ```
