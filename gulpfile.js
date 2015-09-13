@@ -1,6 +1,6 @@
 var gulp = require('gulp');
 var browserSync = require('browser-sync').create();
-var autoprefixer = require('autoprefixer-core');
+var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 var browserify = require('browserify');
 var vinylSourceStream = require('vinyl-source-stream');
@@ -12,7 +12,7 @@ gulp.task('copy-bootstrap', function () {
         .pipe(gulp.dest('src/sass/bootstrap'));
 });
 
-gulp.task('serve', ['sass'], function() {
+gulp.task('serve', ['sass', 'browserify'], function() {
     browserSync.init({
         server: "./dist"
     });
@@ -20,7 +20,7 @@ gulp.task('serve', ['sass'], function() {
     gulp.watch('src/jade/**/*.jade', ['jade']);
     gulp.watch(['src/sass/**/*.sass', 'src/sass/**/*.scss'], ['sass']);
     gulp.watch('src/img/**/*', ['webp']);
-    gulp.watch('src/js/**/*.js', ['browserify']);
+    gulp.watch('src/js/**/*', ['browserify']);
 });
 
 gulp.task('jade', function() {
@@ -41,7 +41,7 @@ var postcssPlugins = [
     cssnano()
 ];
 
-gulp.task('sass', ['jade'], function () {
+gulp.task('sass', function () {
     gulp.src('src/sass/**/*.sass')
         .pipe($.sass().on('error', $.sass.logError))
         .pipe($.rename({
@@ -52,7 +52,7 @@ gulp.task('sass', ['jade'], function () {
         //}))
         .pipe($.postcss(postcssPlugins))
         .pipe(gulp.dest('dist/css'))
-        .pipe(browserSync.stream({once: true}));
+        .pipe(browserSync.stream());
 });
 
 gulp.task('csslibs', function () {
@@ -112,5 +112,5 @@ gulp.task('browserify', function() {
     return es.merge.apply(null, tasks);
 });
 
-gulp.task('build', ['sass', 'csslibs', 'webp', 'uglify']);
+gulp.task('build', ['jade', 'sass', 'csslibs', 'webp', 'uglify']);
 gulp.task('default', ['serve']);
