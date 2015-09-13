@@ -94,7 +94,7 @@ gulp build
 
 #### Favicons
 
-Скопируйте файлы `src/apple-touch-icon-precomposed.png` и `src/favicon.ico` в папку `dist`.
+Для генерации favicons вы можете пользоваться сервисом [RealFaviconGenerator](http://realfavicongenerator.net/). Положите сгенерированные иконки в папку `/dist`.
 
 [Дополнительная информация про иконки](https://github.com/audreyr/favicon-cheat-sheet).
 
