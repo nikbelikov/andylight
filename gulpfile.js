@@ -3,6 +3,7 @@ var browserSync = require('browser-sync').create();
 var autoprefixer = require('autoprefixer');
 var cssnano = require('cssnano');
 var browserify = require('browserify');
+var babel = require('babelify');
 var vinylSourceStream = require('vinyl-source-stream');
 var es = require('event-stream');
 var $ = require('gulp-load-plugins')();
@@ -101,6 +102,7 @@ gulp.task('browserify', function() {
             entries: ['src/js/' + entry],
             debug: true
         })
+            .transform(babel)
             .bundle()
             .pipe(vinylSourceStream(entry))
             .pipe($.rename({
