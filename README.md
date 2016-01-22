@@ -25,7 +25,7 @@ gulp build
 
 - [BrowserSync](http://www.browsersync.io/)
 - компиляция jade и sass
-- сжатие стилей, скриптов и изображений
+- сжатие стилей, скриптов (ES2015) и изображений
 
 ### BrowserSync
 
