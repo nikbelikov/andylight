@@ -5,5 +5,5 @@ require('browsernizr/test/img/webp');
 require('browsernizr');
 
 // module example
-var testModule = require('./modules/test.js');
-testModule.init();
+var mainModule = require('./modules/main');
+mainModule.init();
