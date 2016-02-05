@@ -1,9 +1,8 @@
 "use strict";
 
-// modernizr sample (webp support check)
-require('browsernizr/test/img/webp');
-require('browsernizr');
+// modernizr (webp support check only)
+import 'browsernizr/test/img/webp';
+import 'browsernizr';
 
-// module example
-var mainModule = require('./modules/main');
+import mainModule from './modules/main';
 mainModule.init();

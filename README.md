@@ -8,7 +8,6 @@
 
 - [ruby](https://www.ruby-lang.org/ru/downloads/)
 - [nodejs и npm](https://nodejs.org/)
-- [bower](http://bower.io/)
 - [gulp](http://gulpjs.com/)
 
 Далее выполняем:
@@ -25,7 +24,7 @@ gulp build
 
 - [BrowserSync](http://www.browsersync.io/)
 - компиляция jade и sass
-- сжатие стилей, скриптов (ES2015) и изображений
+- сжатие стилей, скриптов ([ES2015](https://github.com/lukehoban/es6features)) и изображений
 
 ### BrowserSync
 

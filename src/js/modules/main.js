@@ -1,9 +1,10 @@
 "use strict";
 
-var Module = {
+export default {
     init: function () {
-        console.log("Andylight works!");
+        this.showMessage('Andylight works!');
+    },
+    showMessage: function (message) {
+        console.log(message);
     }
-};
-
-module.exports = Module;
+}
