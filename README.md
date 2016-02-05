@@ -120,7 +120,7 @@ body
 
 Все необходимые пакеты устанавливаются через [npm](https://www.npmjs.com/) (`sudo npm i packagename --save`) и после этого их можно использовать у себя в коде. Например:
 
-`var $ = require('jquery')`
+`import $ from 'jquery';`
 
 Если нужного пакета в npm нет, рекомендуется устанавливать его через [Bower](http://bower.io/) (`bower i packagename --save`). Для правильного использования сторонних плагинов, установленных через Bower, используется [browserify-shim](https://github.com/thlorenz/browserify-shim), который превращает библиотеки в CommonJS-совместимые модули.
 
@@ -149,7 +149,7 @@ body
 
 После этого вы можете подключать ваш плагин так, будто бы это обычный npm-модуль:
 
-`require('owlcarousel');`
+`import 'owlcarousel';`
 
 Входная точка приложения - файл src/js/app.js.
 
