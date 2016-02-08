@@ -13,7 +13,7 @@ gulp.task('copy-bootstrap', function () {
         .pipe(gulp.dest('src/sass/bootstrap'));
 });
 
-gulp.task('serve', ['sass', 'browserify'], function() {
+gulp.task('serve', ['sass', 'browserify'], function () {
     browserSync.init({
         server: "./dist"
     });
@@ -24,7 +24,7 @@ gulp.task('serve', ['sass', 'browserify'], function() {
     gulp.watch('src/js/**/*', ['browserify']);
 });
 
-gulp.task('jade', function() {
+gulp.task('jade', function () {
     return gulp.src('src/jade/*.jade')
         .pipe($.jade({
             pretty: "    "
@@ -85,7 +85,7 @@ gulp.task('webp', ['images'], function () {
         .pipe(browserSync.stream({once: true}));
 });
 
-gulp.task('uglify', ['browserify'], function() {
+gulp.task('uglify', ['browserify'], function () {
     return gulp.src('dist/js/*.js')
         .pipe($.uglify({
             preserveComments: 'some'
@@ -93,11 +93,11 @@ gulp.task('uglify', ['browserify'], function() {
         .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('browserify', function() {
+gulp.task('browserify', function () {
     var files = [
         'app.js'
     ];
-    var tasks = files.map(function(entry) {
+    var tasks = files.map(function (entry) {
         return browserify({
             entries: ['src/js/' + entry],
             debug: true
