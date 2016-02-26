@@ -54,7 +54,10 @@ gulp.task('sass', function () {
             suffix: ".min"
         }))
         //.pipe($.uncss({
-        //    html: ['index.html']
+        //    html: ['index.html'],
+        //    ignore: [
+        //        '.selector'
+        //    ]
         //}))
         .pipe($.postcss(postcssPlugins))
         .pipe(gulp.dest('dist/css'))
