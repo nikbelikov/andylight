@@ -56,7 +56,7 @@ gulp.task('sass', function () {
         //.pipe($.uncss({
         //    html: ['index.html'],
         //    ignore: [
-        //        '.selector'
+        //        '.my-selector'
         //    ]
         //}))
         .pipe($.postcss(postcssPlugins))
