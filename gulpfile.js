@@ -28,9 +28,10 @@ gulp.task('jade', function () {
     return gulp.src('src/jade/*.jade')
         .pipe($.jade({
             pretty: "    "
-        }).on('error', function (err) {
-            console.log(err);
-        }))
+        }).on('error', $.notify.onError({
+            title: "Jade Error",
+            message: "<%= error.message %>"
+        })))
         .pipe(gulp.dest('dist'))
         .pipe(browserSync.stream({once: true}));
 });
@@ -44,7 +45,11 @@ var postcssPlugins = [
 
 gulp.task('sass', function () {
     gulp.src('src/sass/**/*.sass')
-        .pipe($.sass().on('error', $.sass.logError))
+        .pipe($.sass()
+        .on('error', $.notify.onError({
+            title: "Sass Error",
+            message: "<%= error.message %>"
+        })))
         .pipe($.rename({
             suffix: ".min"
         }))
@@ -104,6 +109,10 @@ gulp.task('browserify', function () {
         })
             .transform(babel)
             .bundle()
+            .on('error', $.notify.onError({
+                title: "Scripts Error",
+                message: "<%= error.message %>"
+            }))
             .pipe(vinylSourceStream(entry))
             .pipe($.rename({
                 extname: '.bundle.js'
