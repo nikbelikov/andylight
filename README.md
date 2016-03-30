@@ -6,7 +6,6 @@
 
 У вас должны быть установлены:
 
-- [ruby](https://www.ruby-lang.org/ru/downloads/)
 - [nodejs и npm](https://nodejs.org/)
 - [gulp](http://gulpjs.com/)
 
