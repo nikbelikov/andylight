@@ -86,7 +86,7 @@ gulp.task('webp', ['images'], function () {
   return gulp.src(['dist/img/**/*.jpg', 'dist/img/**/*.png'])
     .pipe($.newer('dist/img/**/*.webp'))
     .pipe($.webp({
-      quality: 90
+      quality: 85
     }))
     .pipe(gulp.dest('dist/img'))
     .pipe(browserSync.stream({once: true}));
