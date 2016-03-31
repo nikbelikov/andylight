@@ -23,6 +23,7 @@
     "gulp-imagemin": "2.4.0",
     "gulp-jade": "1.1.0",
     "gulp-load-plugins": "1.2.0",
+    "gulp-newer": "1.1.0",
     "gulp-notify": "2.2.0",
     "gulp-postcss": "6.1.0",
     "gulp-rename": "1.2.2",

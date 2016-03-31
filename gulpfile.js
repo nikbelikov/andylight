@@ -73,13 +73,9 @@ gulp.task('csslibs', function () {
     .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('cleanImages', function () {
-  return gulp.src('dist/img', {read: false})
-    .pipe($.clean());
-});
-
-gulp.task('images', ['cleanImages'], function () {
+gulp.task('images', function () {
   return gulp.src('src/img/**/*')
+    .pipe($.newer('dist/img'))
     .pipe($.imagemin({
       progressive: true
     }))
@@ -87,8 +83,11 @@ gulp.task('images', ['cleanImages'], function () {
 });
 
 gulp.task('webp', ['images'], function () {
-  return gulp.src('dist/img/**/*')
-    .pipe($.webp())
+  return gulp.src(['dist/img/**/*.jpg', 'dist/img/**/*.png'])
+    .pipe($.newer('dist/img/**/*.webp'))
+    .pipe($.webp({
+      quality: 90
+    }))
     .pipe(gulp.dest('dist/img'))
     .pipe(browserSync.stream({once: true}));
 });
