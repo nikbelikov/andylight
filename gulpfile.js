@@ -13,6 +13,12 @@ gulp.task('copy-bootstrap', function () {
     .pipe(gulp.dest('src/sass/bootstrap'));
 });
 
+gulp.task('copy-favicons', function () {
+  gulp.src('src/favicons/*')
+    .pipe($.newer('dist/favicons'))
+    .pipe(gulp.dest('dist/favicons'));
+});
+
 gulp.task('serve', ['sass', 'browserify'], function () {
   browserSync.init({
     server: "./dist"
@@ -43,7 +49,7 @@ var postcssPlugins = [
   cssnano()
 ];
 
-gulp.task('sass', function () {
+gulp.task('sass-build', function () {
   gulp.src('src/sass/**/*.sass')
     .pipe($.sass()
       .on('error', $.notify.onError({
@@ -60,6 +66,27 @@ gulp.task('sass', function () {
     //    ]
     //}))
     .pipe($.postcss(postcssPlugins))
+    .pipe(gulp.dest('dist/css'))
+    .pipe(browserSync.stream());
+});
+
+gulp.task('sass', function () {
+  gulp.src('src/sass/**/*.sass')
+    .pipe($.sourcemaps.init())
+    .pipe($.sass()
+      .on('error', $.notify.onError({
+        title: "Sass Error",
+        message: "<%= error.message %>"
+      })))
+    .pipe($.rename({
+      suffix: ".min"
+    }))
+    .pipe($.postcss([
+      autoprefixer({
+        browsers: ['last 2 versions']
+      })
+    ]))
+    .pipe($.sourcemaps.write())
     .pipe(gulp.dest('dist/css'))
     .pipe(browserSync.stream());
 });
@@ -84,7 +111,7 @@ gulp.task('images', function () {
 
 gulp.task('webp', ['images'], function () {
   return gulp.src(['dist/img/**/*.jpg', 'dist/img/**/*.png'])
-    .pipe($.newer('dist/img/**/*.webp'))
+    .pipe($.cached('dist/img'))
     .pipe($.webp({
       quality: 85
     }))
@@ -125,5 +152,5 @@ gulp.task('browserify', function () {
   return es.merge.apply(null, tasks);
 });
 
-gulp.task('build', ['jade', 'sass', 'csslibs', 'webp', 'uglify']);
+gulp.task('build', ['jade', 'sass-build', 'csslibs', 'webp', 'uglify', 'copy-favicons']);
 gulp.task('default', ['serve']);

@@ -45,7 +45,7 @@ gulp build
 
 Если вы хотите подключить сторонние стили, добавьте их в переменную csslibs в файле gulpfile.js, и выполните задачу `gulp csslibs`. Также раскомментируйте строку подключения стилей в src/jade/includes/head.jade.
 
-Вы можете воспользоваться плагином [gulp-uncss](https://www.npmjs.com/package/gulp-uncss), который используется в Andylight, чтобы убрать ненужные стили (см. файл gulpfile.js: задача `gulp-sass`).
+Вы можете воспользоваться плагином [gulp-uncss](https://www.npmjs.com/package/gulp-uncss), который используется в Andylight, чтобы убрать ненужные стили (см. файл gulpfile.js: задача `sass-build`).
 
 Стоит придерживаться единому стилю написания кода, чтобы обеспечить высокую скорость разработки и поддерживаемость ваших проектов.
 
@@ -83,8 +83,6 @@ body
     background-image: url(#{$img}/bg-main.webp)
 ```
 
-Чтобы обеспечить синхронизацию файлов в папках, сперва выполняется задача `gulp cleanImages`, которая удаляет все картинки. Затем снова запускается генерация.
-
 Вы можете использовать [систему символов SVG](https://css-tricks.com/svg-symbol-good-choice-icons/). Эти символы описываются единожды в самом начале документа (для этого заводится один скрытый тег svg), а затем их можно использовать повторно где-либо на страницах, менять их заливку, размер, применять трансформации (поворот и др.), а также анимировать какие-либо значения (fill и др.) с помощью [transition](http://www.w3schools.com/css/css3_transitions.asp) или применять сложную анимацию на основе [keyframes](http://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp).
 
 Пример:
@@ -109,7 +107,7 @@ body
 
 #### Favicons
 
-Для генерации favicons вы можете пользоваться сервисом [RealFaviconGenerator](http://realfavicongenerator.net/). Положите сгенерированные иконки в папку `/dist`.
+Для генерации favicons вы можете пользоваться сервисом [RealFaviconGenerator](http://realfavicongenerator.net/). Положите сгенерированные иконки в папку `/src/favicons`.
 
 [Дополнительная информация про иконки](https://github.com/audreyr/favicon-cheat-sheet).
 
@@ -117,38 +115,9 @@ body
 
 Для сборки ваших и сторонних модулей используется [Browserify](http://browserify.org/).
 
-Все необходимые пакеты устанавливаются через [npm](https://www.npmjs.com/) (`sudo npm i packagename --save`) и после этого их можно использовать у себя в коде. Например:
+Все необходимые пакеты устанавливаются через [npm](https://www.npmjs.com/) (`sudo npm i packagename -SE`) и после этого их можно использовать у себя в коде. Например:
 
 `import $ from 'jquery';`
-
-Если нужного пакета в npm нет, рекомендуется устанавливать его через [Bower](http://bower.io/) (`bower i packagename --save`). Для правильного использования сторонних плагинов, установленных через Bower, используется [browserify-shim](https://github.com/thlorenz/browserify-shim), который превращает библиотеки в CommonJS-совместимые модули.
-
-Пример:
-
-```
-/* file: package.json */
-
-"browserify": {
-  "transform": [
-    "browserify-shim"
-  ]
-},
-"browser": {
-  "owlcarousel": "./bower_components/owl.carousel/dist/owl.carousel.min.js"
-},
-"browserify-shim": {
-  "owlcarousel": {
-    "exports": "owlcarousel",
-    "depends": [
-      "jquery:jQuery"
-    ]
-  }
-}
-```
-
-После этого вы можете подключать ваш плагин так, будто бы это обычный npm-модуль:
-
-`import 'owlcarousel';`
 
 Входная точка приложения - файл src/js/app.js.
 
