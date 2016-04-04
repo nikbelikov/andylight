@@ -1,6 +1,11 @@
-html, body
+html
+  min-width: $layout-min-width
   height: 100%
-  font-family: $mainFont
+
+body
+  display: flex
+  flex-direction: column
+  height: 100%
 
 ::selection
   background: $select-text-bg
@@ -10,30 +15,22 @@ html, body
   background: $select-text-bg
   color: $select-text-color
 
-.main-wrapper
-  min-width: $layout-min-width
-  max-width: $layout-max-width
-  margin: 0 auto
-  min-height: 100%
-  height: 100%
-
 .header
+  flex: 0 0 auto
   height: $header-height
   background: #127BB9
   color: white
 
 .content
-  padding: 0 0 $footer-height
+  flex: 1 0 auto
 
 .wrapper
   width: $layout-min-width
+  max-width: $layout-max-width
   margin: 0 auto
 
 .footer
-  min-width: $layout-min-width
-  max-width: $layout-max-width
-  margin: -$footer-height auto 0
+  flex: 0 0 auto
   height: $footer-height
-  position: relative
   background: #127BB9
   color: white
