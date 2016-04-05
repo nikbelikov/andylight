@@ -105,6 +105,8 @@ body
 	...
 ```
 
+Для автоматизации процесса хорошо подойдет плагин [gulp-svgstore](https://www.npmjs.com/package/gulp-svgstore).
+
 #### Favicons
 
 Для генерации favicons вы можете пользоваться сервисом [RealFaviconGenerator](http://realfavicongenerator.net/). Положите сгенерированные иконки в папку `/src/favicons`.
