@@ -1,15 +1,15 @@
 # Andylight
 
-Шаблон для быстрого старта верстки.
+Frontend template for quick start of your work.
 
-## Как начать?
+## How to start?
 
-У вас должны быть установлены:
+You need to install these things first:
 
 - [nodejs и npm](https://nodejs.org/)
 - [gulp](http://gulpjs.com/)
 
-Далее выполняем:
+Next execute following comands in your terminal:
 
 ```
 sudo npm i
@@ -17,48 +17,48 @@ gulp copy-bootstrap
 gulp build
 ```
 
-После выкачивания всех зависимостей проекта и успешной первичной сборки, запустите задачу `gulp` или `gulp serve` и можете приступать к верстке.
+After downloading all dependencies of the project and successful first build execute `gulp` or `gulp-serve` task and you can do your work further.
 
-## Что включено?
+## What's in the box?
 
 - [BrowserSync](http://www.browsersync.io/)
-- компиляция jade и sass
-- сжатие стилей, скриптов ([ES2015](https://github.com/lukehoban/es6features)) и изображений
+- jade and sass compilation
+- styles, scripts ([ES2015](https://github.com/lukehoban/es6features)) and images minification
 
 ### BrowserSync
 
-Задача `gulp serve` откроет вкладку в браузере, и в консоли вы увидите local и external пути до вашего проекта. Так вы сможете отлаживать верстку сразу в нескольких браузерах и устройствах.
+`gulp serve` task will open tab in the browser,  and you will see local and external paths to your project in the console. So you can debug sources in different browsers and devices at the same time.
 
 ### Jade
 
-В папке src/jade расположены шаблоны для генерации. После выполнения задачи `gulp jade` в корне проекта появятся html-файлы, которые будут результатом компиляции из вышеуказанной папки с исходниками.
+There are templates for generation in src/jade folder. After `gulp jade` task execution html-files will appear in the root folder.
 
-По умолчанию имеется один index.jade, в котором импортируются includes/head.jade, includes/header.jade и includes/footer.jade. Их стоит использовать в других подобных создаваемых шаблонах.
+By default there is one index.jade in whome includes/head.jade, includes/header.jade and includes/footer.jade are including. It will be right to use them in other new templates.
 
-Файлы, расположенные в папке src/jade/includes, не компилируются.
+The files in src/jade/includes folder will not be compiled.
 
-### Стили
+### Styles
 
-Все стили находятся в папке src/sass. Gulp собирает их в один файл main.min.css и кладет в папку dist/css.
+All the styles are locatad in src/sass folder. Gulp combines them into the one main.min.css and puts it into the dist/css folder.
 
-Все делится на логические блоки (файлы). Если вы хотите добавить еще один, создайте новый sass-файл и подключите его в main.sass.
+All files are presents logical blocks. If you want to add onother one, create the new sass-file and include it into the main.sass.
 
-Если вы хотите подключить сторонние стили, добавьте их в переменную csslibs в файле gulpfile.js, и выполните задачу `gulp csslibs`. Также раскомментируйте строку подключения стилей в src/jade/includes/head.jade.
+If you want to connect some other styles, add them into the csslibs variable in gulpfile.js and execute `gulp csslibs` task. Also uncomment link string in src/jade/includes/head.jade.
 
-Вы можете воспользоваться плагином [gulp-uncss](https://www.npmjs.com/package/gulp-uncss), который используется в Andylight, чтобы убрать ненужные стили (см. файл gulpfile.js: задача `sass-build`).
+You can use [gulp-uncss](https://www.npmjs.com/package/gulp-uncss) to clear unused styles (gulpfile.js: `sass-build` task).
 
-Стоит придерживаться единому стилю написания кода, чтобы обеспечить высокую скорость разработки и поддерживаемость ваших проектов.
+Try to follow codestyle in your files to ensure high speed of development and supporting your projects.
 
 #### Postcss
 
-В шаблоне для изменения скомпилированного css-кода используются [плагины](http://postcss.parts/) [Postcss](https://github.com/postcss/postcss).
+[Postcss](https://github.com/postcss/postcss) [plugins](http://postcss.parts/) are used for changing compiled css.
 
-- [autoprefixer](https://github.com/postcss/autoprefixer) (автоматически проставляет браузерные префиксы)
-- [cssnano](https://github.com/ben-eb/cssnano) (сжимает css-код)
+- [autoprefixer](https://github.com/postcss/autoprefixer) (automatically inserts browser prefixes)
+- [cssnano](https://github.com/ben-eb/cssnano) (compresses css-code)
 
-### Изображения
+### Images
 
-За сжатие изображений отвечает задача `gulp images` (в том числе `gulp webp`). Вы можете вызывать ее самостоятельно, либо запустить `gulp`, и после этого каждый файл изображения, размещенный в src/img (включая svg), будет сжат и положен в dist/img с тем же именем. Также используется генерация [WebP-изображений](https://developers.google.com/speed/webp/). Их можно использовать так:
+`gulp images` taks is used for images compression (including `gulp webp`). You can execute it by youself or by starting `gulp` task. After that each picture, which is dropped into the src/img folder, will be compressed and copied into dist/img folder with the same name. Also there Webp-images are using. You can use them so:
 
 **html:**
 
@@ -69,7 +69,7 @@ gulp build
 </picture>
 ```
 
-**css (вместе с [modernizr](https://modernizr.com/)):**
+**css (with [modernizr](https://modernizr.com/)):**
 
 ```
 body
@@ -83,9 +83,9 @@ body
     background-image: url(#{$img}/bg-main.webp)
 ```
 
-Вы можете использовать [систему символов SVG](https://css-tricks.com/svg-symbol-good-choice-icons/). Эти символы описываются единожды в самом начале документа (для этого заводится один скрытый тег svg), а затем их можно использовать повторно где-либо на страницах, менять их заливку, размер, применять трансформации (поворот и др.), а также анимировать какие-либо значения (fill и др.) с помощью [transition](http://www.w3schools.com/css/css3_transitions.asp) или применять сложную анимацию на основе [keyframes](http://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp).
+You can use [SVG icon system](https://css-tricks.com/svg-symbol-good-choice-icons/). These symbols are described once in the beginning of the document (hidden svg tag), and then you can use these icons in any places of your project. You can change their fill color, size, apply css transformations (rotate, skew ect.), and animate them (fill, width ect.) with [transitions](http://www.w3schools.com/css/css3_transitions.asp) or [keyframes](http://www.w3schools.com/cssref/css3_pr_animation-keyframes.asp).
 
-Пример:
+Example:
 
 ```
 ...
@@ -105,52 +105,52 @@ body
 	...
 ```
 
-Для автоматизации процесса хорошо подойдет плагин [gulp-svgstore](https://www.npmjs.com/package/gulp-svgstore).
+You can use [gulp-svgstore](https://www.npmjs.com/package/gulp-svgstore) to automate this process.
 
 #### Favicons
 
-Для генерации favicons вы можете пользоваться сервисом [RealFaviconGenerator](http://realfavicongenerator.net/). Положите сгенерированные иконки в папку `/src/favicons`.
+For generating favicons you can use [RealFaviconGenerator](http://realfavicongenerator.net/). Put all of the generated icons in `/src/favicons` folder.
 
-[Дополнительная информация про иконки](https://github.com/audreyr/favicon-cheat-sheet).
+[More about favicons](https://github.com/audreyr/favicon-cheat-sheet).
 
-### Скрипты
+### Scripts
 
-Для сборки ваших и сторонних модулей используется [Browserify](http://browserify.org/).
+[Browserify](http://browserify.org/) is used to build your and other modules .
 
-Все необходимые пакеты устанавливаются через [npm](https://www.npmjs.com/) (`sudo npm i packagename -SE`) и после этого их можно использовать у себя в коде. Например:
+All needed packages are installing with [npm](https://www.npmjs.com/) (`sudo npm i packagename -SE`) and after that you can use them in the code. For example:
 
 `import $ from 'jquery';`
 
-Входная точка приложения - файл src/js/app.js.
+An entry point of the application is `src/js/app.js`.
 
-### Финальная сборка
+### Final build
 
-После того, как вы закончили работу над очередной частью вашего проекта, выполните задачу `gulp build`, чтобы привести выходные файлы с правильное состояние. Так, например, вы добьетесь того, что js будет сжат и из него сборщик удалит карты кода.
+After another finished part of your project make `gulp build` task to bring result files to the right way. Thus javascript will be minified, sourcemap will be cleared and will happen other useful things.
 
-### Тестируем баги верстки
+### Testing
 
-Откройте отладчик и выполните следующий код:
+Open browser's console and execute following command:
 
 ```
 var a,w=document.createTreeWalker(document,NodeFilter.SHOW_TEXT);while(a=w.nextNode()){if(a.textContent.trim().length)a.textContent='Одиннадцатиклассница пошла посмотреть на достопримечательность, она шла долго, несколько строчек, пока не пришла'}
 ```
 
-Это поможет вам увидеть, где что поехало, какие блоки сломались.
+It will help you see, where sick places are locating.
 
-Код взят [из статьи на Хабрахабре](http://habrahabr.ru/company/2gis/blog/246831/) от 2ГИС.
+This code was taken from [Habrahabr article](http://habrahabr.ru/company/2gis/blog/246831/) (2GIS).
 
-Вы также можете воспользоваться [расширением для Google Chrome](http://goo.gl/3xt6MV).
+Also you can use [Google Chrome extension](http://goo.gl/3xt6MV).
 
-## Контакты
+## Contacts
 
-Если у вас имеются какие-либо вопросы или пожелания, пишите письма на [nikbelikov@me.com](mailto:nikbelikov@me.com) или воспользуйтесь [твиттером](https://twitter.com/_nikbelikov).
+If you have some questions or wishes, feel free to contact me in [nikbelikov@me.com](mailto:nikbelikov@me.com) or [tweet me](https://twitter.com/_nikbelikov).
 
-## Лицензия
+## License
 
 Copyright (c) 2014-2016 [nikbelikov.ru](http://nikbelikov.ru/)
 
-Данная лицензия разрешает лицам, получившим копию данного программного обеспечения и сопутствующей документации (в дальнейшем именуемыми «Программное Обеспечение»), безвозмездно использовать Программное Обеспечение без ограничений, включая неограниченное право на использование, копирование, изменение, добавление, публикацию, распространение, сублицензирование и/или продажу копий Программного Обеспечения, также как и лицам, которым предоставляется данное Программное Обеспечение, при соблюдении следующих условий:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 
-Указанное выше уведомление об авторском праве и данные условия должны быть включены во все копии или значимые части данного Программного Обеспечения.
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
-ДАННОЕ ПРОГРАММНОЕ ОБЕСПЕЧЕНИЕ ПРЕДОСТАВЛЯЕТСЯ «КАК ЕСТЬ», БЕЗ КАКИХ-ЛИБО ГАРАНТИЙ, ЯВНО ВЫРАЖЕННЫХ ИЛИ ПОДРАЗУМЕВАЕМЫХ, ВКЛЮЧАЯ, НО НЕ ОГРАНИЧИВАЯСЬ ГАРАНТИЯМИ ТОВАРНОЙ ПРИГОДНОСТИ, СООТВЕТСТВИЯ ПО ЕГО КОНКРЕТНОМУ НАЗНАЧЕНИЮ И ОТСУТСТВИЯ НАРУШЕНИЙ ПРАВ. НИ В КАКОМ СЛУЧАЕ АВТОРЫ ИЛИ ПРАВООБЛАДАТЕЛИ НЕ НЕСУТ ОТВЕТСТВЕННОСТИ ПО ИСКАМ О ВОЗМЕЩЕНИИ УЩЕРБА, УБЫТКОВ ИЛИ ДРУГИХ ТРЕБОВАНИЙ ПО ДЕЙСТВУЮЩИМ КОНТРАКТАМ, ДЕЛИКТАМ ИЛИ ИНОМУ, ВОЗНИКШИМ ИЗ, ИМЕЮЩИМ ПРИЧИНОЙ ИЛИ СВЯЗАННЫМ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ ИЛИ ИСПОЛЬЗОВАНИЕМ ПРОГРАММНОГО ОБЕСПЕЧЕНИЯ ИЛИ ИНЫМИ ДЕЙСТВИЯМИ С ПРОГРАММНЫМ ОБЕСПЕЧЕНИЕМ.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
