@@ -41,7 +41,7 @@ The files in src/jade/includes folder will not be compiled.
 
 All the styles are locatad in src/sass folder. Gulp combines them into the one main.min.css and puts it into the dist/css folder.
 
-All files are presents logical blocks. If you want to add another one, create the new sass-file and include it into the main.sass.
+All files are presents logical blocks. If you want to add onother one, create the new sass-file and include it into the main.sass.
 
 If you want to connect some other styles, add them into the csslibs variable in gulpfile.js and execute `gulp csslibs` task. Also uncomment link string in src/jade/includes/head.jade.
 
