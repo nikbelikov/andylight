@@ -6,8 +6,8 @@
 
 У вас должны быть установлены:
 
-- [nodejs и npm](https://nodejs.org/)
-- [gulp](http://gulpjs.com/)
+- [nodejs и npm](https://nodejs.org/) (>=6.3.0, >=3.10.3)
+- [gulp](http://gulpjs.com/) (>=1.2.2)
 
 Далее выполняем:
 
