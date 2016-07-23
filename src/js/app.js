@@ -1,5 +1,3 @@
-"use strict";
-
 // modernizr (webp support check only)
 import 'browsernizr/test/img/webp';
 import 'browsernizr';

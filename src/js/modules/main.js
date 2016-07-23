@@ -1,8 +1,7 @@
-"use strict";
-
 export default {
   init: function () {
-    this.showMessage('Andylight works!');
+    let projectName = 'Andylight';
+    this.showMessage(`${projectName} works!`);
   },
   showMessage: function (message) {
     console.log(message);
