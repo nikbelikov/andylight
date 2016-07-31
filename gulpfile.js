@@ -26,7 +26,8 @@ gulp.task('serve', ['sass', 'browserify'], function () {
 
   gulp.watch('src/jade/**/*.jade', ['jade']);
   gulp.watch(['src/sass/**/*.sass', 'src/sass/**/*.scss'], ['sass']);
-  gulp.watch('src/img/**/*', ['webp']);
+  gulp.watch('src/img/svg/icons/**/*', ['svgstore']);
+  gulp.watch(['src/img/**/*', '!src/img/svg/icons/**/*'], ['webp']);
   gulp.watch('src/js/**/*', ['browserify']);
 });
 
@@ -100,6 +101,23 @@ gulp.task('csslibs', function () {
     .pipe(gulp.dest('dist/css'));
 });
 
+gulp.task('svgstore', function () {
+  return gulp
+    .src('src/img/svg/icons/**/*.svg')
+    .pipe($.svgmin({
+      plugins: [
+        {
+          removeAttrs: {
+            attrs: ['fill']
+          }
+        }
+      ]
+    }))
+    .pipe($.svgstore({inlineSvg: true}))
+    .pipe($.svg2string())
+    .pipe(gulp.dest('dist/img/svg'));
+});
+
 gulp.task('images', function () {
   return gulp.src('src/img/**/*')
     .pipe($.newer('dist/img'))
@@ -152,5 +170,5 @@ gulp.task('browserify', function () {
   return es.merge.apply(null, tasks);
 });
 
-gulp.task('build', ['jade', 'sass-build', 'csslibs', 'webp', 'uglify', 'copy-favicons']);
+gulp.task('build', ['jade', 'sass-build', 'csslibs', 'svgstore', 'webp', 'uglify', 'copy-favicons']);
 gulp.task('default', ['serve']);
