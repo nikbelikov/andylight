@@ -47,7 +47,12 @@ var postcssPlugins = [
   autoprefixer({
     browsers: ['last 2 versions']
   }),
-  cssnano()
+  cssnano({
+    zindex: false,
+    reduceIdents: false,
+    discardUnused: false,
+    mergeIdents: false
+  })
 ];
 
 gulp.task('sass-build', function () {
