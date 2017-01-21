@@ -97,15 +97,6 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task('csslibs', function () {
-  var csslibs = [];
-
-  gulp.src(csslibs)
-    .pipe($.concat('libs.min.css'))
-    .pipe($.postcss(postcssPlugins))
-    .pipe(gulp.dest('dist/css'));
-});
-
 gulp.task('svgstore', function () {
   return gulp
     .src('src/img/svg/icons/**/*.svg')
@@ -175,5 +166,5 @@ gulp.task('browserify', function () {
   return es.merge.apply(null, tasks);
 });
 
-gulp.task('build', ['jade', 'sass-build', 'csslibs', 'svgstore', 'webp', 'uglify', 'copy-favicons']);
+gulp.task('build', ['jade', 'sass-build', 'svgstore', 'webp', 'uglify', 'copy-favicons']);
 gulp.task('default', ['serve']);
