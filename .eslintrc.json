@@ -1,0 +1,41 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "browser": true,
+    "es6": true
+  },
+  "parserOptions": {
+    "ecmaFeatures": {
+      "ecmaVersion": 6,
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    },
+    "sourceType": "module"
+  },
+  "extends": "airbnb",
+  "plugins": [
+    "react",
+    "jsx-a11y",
+    "import"
+  ],
+  "rules": {
+    "react/prefer-es6-class": [
+      2,
+      "always"
+    ],
+    "react/prefer-stateless-function": [0],
+    "react/forbid-prop-types": [0],
+    "react/jsx-no-bind": [0],
+    "react/no-find-dom-node": [0],
+    "import/no-extraneous-dependencies": [0],
+    "import/no-unresolved": [1],
+    "class-methods-use-this": [0],
+    "jsx-a11y/label-has-for": [0],
+    "no-underscore-dangle": ["error", { "allow": ["b_"] }],
+    "jsx-a11y/no-static-element-interactions": [0]
+  },
+  "globals": {
+    "Swiper": true,
+    "asset_path": true
+  }
+}

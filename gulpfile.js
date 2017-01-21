@@ -141,7 +141,7 @@ gulp.task('uglify', ['browserify'], function () {
     .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('browserify', function () {
+gulp.task('browserify', ['lint'], function () {
   var files = [
     'app.js'
   ];
@@ -164,6 +164,13 @@ gulp.task('browserify', function () {
       .pipe(browserSync.stream({once: true}));
   });
   return es.merge.apply(null, tasks);
+});
+
+gulp.task('lint', () => {
+  return gulp.src('src/js/**/*')
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError());
 });
 
 gulp.task('build', ['jade', 'sass-build', 'svgstore', 'webp', 'uglify', 'copy-favicons']);
