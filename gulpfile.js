@@ -26,7 +26,8 @@ gulp.task('serve', ['sass', 'browserify'], function () {
 
   gulp.watch('src/jade/**/*.jade', ['jade']);
   gulp.watch(['src/sass/**/*.sass', 'src/sass/**/*.scss'], ['sass']);
-  gulp.watch('src/img/**/*', ['webp']);
+  gulp.watch('src/img/svg/icons/**/*', ['svgstore']);
+  gulp.watch(['src/img/**/*', '!src/img/svg/icons/**/*'], ['webp']);
   gulp.watch('src/js/**/*', ['browserify']);
 });
 
@@ -46,7 +47,12 @@ var postcssPlugins = [
   autoprefixer({
     browsers: ['last 2 versions']
   }),
-  cssnano()
+  cssnano({
+    zindex: false,
+    reduceIdents: false,
+    discardUnused: false,
+    mergeIdents: false
+  })
 ];
 
 gulp.task('sass-build', function () {
@@ -91,13 +97,21 @@ gulp.task('sass', function () {
     .pipe(browserSync.stream());
 });
 
-gulp.task('csslibs', function () {
-  var csslibs = [];
-
-  gulp.src(csslibs)
-    .pipe($.concat('libs.min.css'))
-    .pipe($.postcss(postcssPlugins))
-    .pipe(gulp.dest('dist/css'));
+gulp.task('svgstore', function () {
+  return gulp
+    .src('src/img/svg/icons/**/*.svg')
+    .pipe($.svgmin({
+      plugins: [
+        {
+          removeAttrs: {
+            attrs: ['fill']
+          }
+        }
+      ]
+    }))
+    .pipe($.svgstore({inlineSvg: true}))
+    .pipe($.svg2string())
+    .pipe(gulp.dest('dist/img/svg'));
 });
 
 gulp.task('images', function () {
@@ -127,7 +141,7 @@ gulp.task('uglify', ['browserify'], function () {
     .pipe(gulp.dest('dist/js'));
 });
 
-gulp.task('browserify', function () {
+gulp.task('browserify', ['lint'], function () {
   var files = [
     'app.js'
   ];
@@ -152,5 +166,12 @@ gulp.task('browserify', function () {
   return es.merge.apply(null, tasks);
 });
 
-gulp.task('build', ['jade', 'sass-build', 'csslibs', 'webp', 'uglify', 'copy-favicons']);
+gulp.task('lint', () => {
+  return gulp.src('src/js/**/*')
+    .pipe($.eslint())
+    .pipe($.eslint.format())
+    .pipe($.eslint.failAfterError());
+});
+
+gulp.task('build', ['jade', 'sass-build', 'svgstore', 'webp', 'uglify', 'copy-favicons']);
 gulp.task('default', ['serve']);

@@ -1,9 +1,9 @@
 export default {
-  init: function () {
-    let projectName = 'Andylight';
+  init() {
+    const projectName = 'Andylight';
     this.showMessage(`${projectName} works!`);
   },
-  showMessage: function (message) {
+  showMessage(message) {
     console.log(message);
-  }
-}
+  },
+};
