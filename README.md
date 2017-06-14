@@ -110,7 +110,10 @@ body
 
 Для генерации favicons вы можете пользоваться сервисом [RealFaviconGenerator](http://realfavicongenerator.net/). Положите сгенерированные иконки в папку `/src/favicons`.
 
-[Дополнительная информация про иконки](https://github.com/audreyr/favicon-cheat-sheet).
+Дополнительная информация про иконки:
+
+- [Favicon cheat sheet](https://github.com/audreyr/favicon-cheat-sheet)
+- [Форматы, поддержка, автоматизация](https://habrahabr.ru/post/330584/)
 
 ### Скрипты
 
