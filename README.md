@@ -63,8 +63,8 @@ gulp build
 
 ```
 <picture>
-	<source srcset="dist/img/image.webp" type="image/webp">
-	<img src="dist/img/image.jpg">
+    <source srcset="dist/img/image.webp" type="image/webp">
+    <img src="dist/img/image.jpg">
 </picture>
 ```
 
@@ -141,7 +141,7 @@ var a,w=document.createTreeWalker(document,NodeFilter.SHOW_TEXT);while(a=w.nextN
 
 Код взят [из статьи на Хабрахабре](http://habrahabr.ru/company/2gis/blog/246831/) от 2ГИС.
 
-Вы также можете воспользоваться [расширением для Google Chrome](http://goo.gl/3xt6MV).
+Вы также можете воспользоваться расширением для Google Chrome - [Floc](http://goo.gl/3xt6MV). С его помощью можно визуально проверить верстку на прочность, нажав пару кнопок.
 
 ## Контакты
 
